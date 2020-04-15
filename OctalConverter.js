@@ -1,19 +1,14 @@
 function convert(decimal) {
     var result = 0;
-    var result_array = [];
-    var temp = decimal;
+    var i = 0;
     while(true) {
-        var quotient = Math.floor(temp / 8);
-        var rest = temp - (quotient * 8);
-        temp = quotient;
-        console.log(`Temp / 8 = ${quotient} + ${rest}`);
-        result_array.push(rest);
+        var quotient = Math.floor(decimal / 8);
+        result += (decimal - (quotient * 8)) * (10 ** i);
         if(quotient == 0) {
             break;
         }
-    }
-    for(var i = result_array.length - 1; i >= 0; i--) {
-        result += (result_array.pop() * (10 ** i));
+        decimal = quotient;
+        i++
     }
     return result;
 }
